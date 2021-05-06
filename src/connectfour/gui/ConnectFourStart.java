@@ -9,7 +9,7 @@ public class ConnectFourStart extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Board board = new Board();
+        Board board = new Board(); // create object of Board class
         Scene scene = new Scene(board);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -13,8 +13,8 @@ public class CellButton extends Button {
 
     private final ImageView imageView;
 
+    // constructor class
     public CellButton() {
-
         this.imageView = new ImageView(PLAY_EMPTY);
         this.setGraphic(imageView);
     }
