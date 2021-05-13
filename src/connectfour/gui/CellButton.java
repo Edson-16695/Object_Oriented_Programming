@@ -18,6 +18,14 @@ public class CellButton extends Button {
         this.imageView = new ImageView(PLAY_EMPTY);
         this.setGraphic(imageView);
     }
+
+    public void setTic(){
+        this.imageView.setImage(PLAY_PLAYER1);
+    }
+
+    public void setTac(){
+        this.imageView.setImage(PLAY_PLAYER2);
+    }
 }
 
 
