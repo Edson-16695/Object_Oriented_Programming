@@ -5,6 +5,7 @@ import connectfour.model.Cell;
 import connectfour.model.ConnectFourModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
 
 public class Board extends GridPane implements View {
@@ -36,6 +37,28 @@ public class Board extends GridPane implements View {
         }
     }
 
+    /**
+     * Shows a message stating that the game ended in a draw.
+     */
+    @Override
+    public void draw() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Draw!");
+        alert.show();
+    }
+
+    /**
+     * Shows a message stating that a player has won the game.
+     * @param player The winner
+     */
+    @Override
+    public void playerWins(int player) {
+        String s = player % 2 == 0 ? "PLAYER1" : "PLAYER2"; // Se 'player' for par, 's' toma o valor de "PLAYER1", caso contrário "PLAYER2"
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Player '" + s + "' won!");
+        alert.show();
+    }
+
     @Override
     public void update(Cell cell, int line, int col) {
         CellButton button = buttons[line][col];
@@ -44,6 +67,13 @@ public class Board extends GridPane implements View {
         }else {
             button.setTac();
         }
+    }
+
+    @Override
+    public void clearBoard() {
+        getChildren().clear();
+        this.createBoard();
+        connectFourModel.resetGame();
     }
 
     class ConnectFourButtonHandler implements EventHandler<ActionEvent>{
